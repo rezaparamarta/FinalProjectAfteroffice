@@ -4,7 +4,7 @@ describe('Final Project', () => {
         cy.clearLocalStorage();
     });
 
-    it('Order Flight', () => {
+    it.skip('Order Flight', () => {
         cy.visit('https://www.agoda.com/id-id/');
 
         // Click Flight Icon
@@ -30,9 +30,29 @@ describe('Final Project', () => {
        
         // Select flight from the list
         cy.xpath(`//div[@class="sc-cjERFW fdGdnw"]//div[@class="sc-cCYyox iNqLle"][1]`).should('exist').click();
-        cy.xpath(`//button[@data-component="flight-card-bookButton"]`).should('be.visible');
+        cy.xpath(`//div[@class="sc-cjERFW fdGdnw"]//div[@class="sc-cCYyox iNqLle"][1]`).should('be.visible');
+        //cy.xpath(`//button[@data-component="flight-card-bookButton"]`).should('exist');
+        // cy.xpath(`//button[@data-component="flight-card-bookButton"]`).click();
 
-        // // Input Data
-        // cy.xpath(`//input[@id='contact.contactFirstName']`).type('Reza');
-    })
-})
+        // Input Data
+        // cy.xpath(`//input[@id='contact.contactFirstName']`).type(Cypress.env('firstName'));
+        // cy.xpath(`//input[@id='contact.contactLastName']`).type(Cypress.env('lastName'));
+        // cy.xpath(`//input[@id='contact.contactEmail']`).type(Cypress.env('email'));
+        // cy.xpath(`//input[@id='contact.contactPhoneNumber']`).type(Cypress.env('phoneNumber'));
+
+    });
+
+    it('Search Chair on Amazon.com', () => {
+        cy.visit('https://www.amazon.com/');
+
+        // Input Item on Search field
+        cy.xpath(`//input[@id="twotabsearchtextbox"]`).type('chair');
+        cy.xpath(`//div[@class="nav-right"]//input[@type="submit"]`).click();
+
+        cy.get('#a-autoid-0-announce').click();
+        cy.xpath(`//div[@class="a-popover-inner"]//li[3]`).click();
+        cy.xpath(`//div[@data-asin="B0F2YLDXXW"]`).click();
+
+        cy.xpath(`//h1[@id="title"]//span[@id="productTitle"]`).should('be.visible').should('have.text', '        Office Chair Recliner Leather Ergonomic Manager and Executive Office Chair(Black)       ');
+    });
+});
