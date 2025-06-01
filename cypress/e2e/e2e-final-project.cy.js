@@ -25,5 +25,14 @@ describe('Final Project', () => {
 
         // Sortir berdasarkan yang tercepat
         cy.xpath(`//div[@data-element-name='flight-sort']`).click();
+        cy.xpath(`//div[@data-testid="floater-container"]//li[@role="presentation"][4]`).click();
+        cy.xpath(`//button[@type="button"]//div[@class="a5d86-box a5d86-fill-inherit a5d86-text-inherit a5d86-pr-4      "]//p[@id="sort-options-label"]`).should('be.visible').click();
+       
+        // Select flight from the list
+        cy.xpath(`//div[@class="sc-cjERFW fdGdnw"]//div[@class="sc-cCYyox iNqLle"][1]`).should('exist').click();
+        cy.xpath(`//button[@data-component="flight-card-bookButton"]`).should('be.visible');
+
+        // // Input Data
+        // cy.xpath(`//input[@id='contact.contactFirstName']`).type('Reza');
     })
 })
