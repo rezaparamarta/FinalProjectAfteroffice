@@ -1,3 +1,5 @@
+import filterItemPage from '../support/pages/amazon/filterItemPage';
+
 describe('Final Project', () => {
     beforeEach(() => {
         cy.clearCookies();
@@ -43,16 +45,12 @@ describe('Final Project', () => {
     });
 
     it('Search Chair on Amazon.com', () => {
-        cy.visit('https://www.amazon.com/');
-
-        // Input Item on Search field
-        cy.xpath(`//input[@id="twotabsearchtextbox"]`).type('chair');
-        cy.xpath(`//div[@class="nav-right"]//input[@type="submit"]`).click();
-
-        cy.get('#a-autoid-0-announce').click();
-        cy.xpath(`//div[@class="a-popover-inner"]//li[3]`).click();
-        cy.xpath(`//div[@data-asin="B0F2YLDXXW"]`).click();
-
-        cy.xpath(`//h1[@id="title"]//span[@id="productTitle"]`).should('be.visible').should('have.text', '        Office Chair Recliner Leather Ergonomic Manager and Executive Office Chair(Black)       ');
+        cy.visit(Cypress.env('BASE_URL_AMAZON'));
+        cy.wait(4000);
+        filterItemPage.searchItems();
+        cy.wait(4000);
+        filterItemPage.sortFeatureItems();
+        filterItemPage.assertionPage();
     });
+
 });
