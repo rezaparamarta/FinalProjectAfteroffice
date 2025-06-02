@@ -55,13 +55,13 @@ describe('Final Project', () => {
 
     // });
 
-    // it('Search Chair on Amazon.com', () => {
-    //     cy.visit(Cypress.env('BASE_URL_AMAZON'));
-    //     cy.wait(4000);
-    //     filterItemPage.searchItems();
-    //     cy.wait(4000);
-    //     filterItemPage.sortFeatureItems();
-    //     filterItemPage.assertionPage();
-    // });
+    it('Search Chair on Amazon.com', () => {
+        cy.visit(Cypress.env('BASE_URL_AMAZON'));
+        cy.wait(5000);
+        filterItemPage.searchItems();
+        cy.wait(5000);
+        filterItemPage.sortFeatureItems();
+        filterItemPage.assertionPage();
+    });
 
 });
