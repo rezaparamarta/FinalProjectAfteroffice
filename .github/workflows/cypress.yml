@@ -12,6 +12,8 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    env:
+      BASE_URL_AMAZON: 'https://www.amazon.com'  # URL yang dipakai di cy.visit()
 
     steps:
       - name: Checkout repository
