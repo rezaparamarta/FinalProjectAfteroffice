@@ -12,7 +12,7 @@ class filterItemPage {
 
     assertionPage() {
         cy.xpath(`//h1[@id="title"]//span[@id="productTitle"]`).should('be.visible');
-        cy.xpath(`//div[@id="corePrice_feature_div"]//div[@data-csa-c-type="widget"]//span[@class="a-price-whole"]`).should('be.visible');
+        cy.xpath(`//div[@id="corePrice_feature_div"]//span[@class="a-price-whole"]`).should('be.visible');
     }
 }
 
