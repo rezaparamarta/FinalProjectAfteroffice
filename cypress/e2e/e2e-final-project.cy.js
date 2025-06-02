@@ -1,10 +1,14 @@
-import filterItemPage from '../support/pages/amazon/filterItemPage';
+import filterItemPage from '../support/pages/amazon/searchItemPage';
 
 describe('Final Project', () => {
     beforeEach(() => {
         cy.clearCookies();
         cy.clearLocalStorage();
     });
+
+    it('', () => {
+        
+    })
 
     it.skip('Order Flight', () => {
         cy.visit('https://www.agoda.com/id-id/');
