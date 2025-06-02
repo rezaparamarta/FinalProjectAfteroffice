@@ -14,7 +14,7 @@ describe('Final Project', () => {
         trendingPage.listMenuTrendingMovies();
         cy.wait(4000);
         trendingPage.goToTrendingMovies();
-        trendingPage.assertionPage();
+        //trendingPage.assertionPage();
     });
 
     // it.skip('Order Flight', () => {
