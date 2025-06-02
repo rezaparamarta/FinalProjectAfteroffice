@@ -1,4 +1,5 @@
 import filterItemPage from '../support/pages/amazon/searchItemPage';
+import trendingPage from '../support/pages/youtube/trendingPage';
 
 describe('Final Project', () => {
     beforeEach(() => {
@@ -7,15 +8,14 @@ describe('Final Project', () => {
     });
 
     it('youtube search', () => {
-        cy.visit('https://www.youtube.com/');
+        cy.visit(Cypress.env(`BASE_URL_YOUTUBE`));
         cy.wait(4000);
-        cy.xpath(`//a[@id="endpoint"][@title="Trending"]`).click();
-        cy.xpath(`//yt-tab-shape[@role="tab"][4]`).click();
+        trendingPage.goToTrending();
+        trendingPage.listMenuTrendingMovies();
         cy.wait(4000);
-        cy.xpath(`//ytd-video-renderer[@class="style-scope ytd-expanded-shelf-contents-renderer"][3]//a[@id="video-title"]`).click();
-        cy.xpath(`//h1[@class="style-scope ytd-watch-metadata"]//yt-formatted-string[@title="TAMARA TERNYATA MAU HANCURKAN KARIR ARINI! - MENCINTAIMU SEKALI LAGI TRAILER"]`).should('be.visible');
-        cy.xpath(`//div[@id="upload-info"]//yt-formatted-string[@id="text"]//a[@class="yt-simple-endpoint style-scope yt-formatted-string"]`).should('be.visible').should('have.text', 'MNC Pictures');
-    })
+        trendingPage.goToTrendingMovies();
+        trendingPage.assertionPage();
+    });
 
     // it.skip('Order Flight', () => {
     //     cy.visit('https://www.agoda.com/id-id/');
