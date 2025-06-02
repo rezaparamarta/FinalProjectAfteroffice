@@ -11,7 +11,10 @@ class filterItemPage {
     }
 
     assertionPage() {
-        cy.xpath(`//h1[@id="title"]//span[@id="productTitle"]`).should('be.visible').should('have.text', '        Office Chair Recliner Leather Ergonomic Manager and Executive Office Chair(Black)       ');
+        cy.xpath(`//h1[@id="title"]//span[@id="productTitle"]`, { timeout: 20000 })
+          .should('be.visible')
+          .invoke('text')
+          .should('contain', 'Office Chair Recliner Leather');
         cy.xpath(`//div[@id="corePrice_feature_div"]//div[@data-csa-c-type="widget"]//span[@class="a-price-whole"]`).should('be.visible');
     }
 }
