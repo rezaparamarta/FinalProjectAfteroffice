@@ -7,7 +7,7 @@ class filterItemPage {
     sortFeatureItems() {
         cy.get('#a-autoid-0-announce').click();
         cy.xpath(`//div[@class="a-popover-inner"]//li[3]`).click();
-        cy.xpath(`//div[@class="s-main-slot s-result-list s-search-results sg-row"]//div[@role="listitem"][5]`).click();
+        cy.xpath(`//div[@class="s-main-slot s-result-list s-search-results sg-row"]//div[@role="listitem"][7]`).click();
     }
 
     assertionPage() {
