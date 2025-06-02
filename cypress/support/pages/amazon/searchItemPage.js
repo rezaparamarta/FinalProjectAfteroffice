@@ -11,7 +11,7 @@ class filterItemPage {
     }
 
     assertionPage() {
-        cy.xpath(`//h1[@id="title"]//span[@id="productTitle"]`, { timeout: 20000 })
+        cy.xpath(`//div[@id="title_feature_div"]//div[@id="titleSection"]//h1[@id="title"]//span[@id="productTitle"]`, { timeout: 20000 })
           .should('be.visible')
           .invoke('text')
           .should('contain', 'Office Chair Recliner Leather');
