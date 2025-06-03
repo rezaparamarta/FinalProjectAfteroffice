@@ -21,6 +21,7 @@ jobs:
     env:
       BASE_URL_AMAZON: 'https://www.amazon.com'  # URL yang dipakai di cy.visit()
       BASE_URL_YOUTUBE: 'https://www.youtube.com'  # URL yang dipakai di cy.visit()
+      BASE_URL_AGODA: 'https://www.agoda.com/id-id/'  # URL yang dipakai di cy.visit()
 
     steps:
       - name: Checkout repository
