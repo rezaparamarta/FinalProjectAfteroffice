@@ -46,8 +46,17 @@ describe('Final Project', () => {
         cy.xpath(`//button[@data-component="flight-card-bookButton"]`).should('exist');
         cy.xpath(`//button[@data-component="flight-card-bookButton"]`).click();
 
-        // Input Data
+        // Input Data 1
         cy.xpath(`//input[@id="contact.contactFirstName"]`).type('Reza');
+        cy.xpath(`//input[@id="contact.contactLastName"]`).type('Paramarta');
+        cy.xpath(`//input[@id="contact.contactEmail"]`).type('reza.paramarta@gmail.com');
+        cy.xpath(`//div[@data-testid="contact.contactCountryOfResidenceId"]//button[@type="button"]`).click();
+        cy.xpath(`//div[@data-testid="floater-container"]//input[@placeholder="Cari"]`).type('Malaysia');
+        cy.xpath(`//ul[@role="listbox"]//input[@type="radio"]`).click();
+        cy.xpath(`//input[@id="contact.contactPhone"]`).type('08123456788');
+
+        // Input data 2
+        cy.xpath(`//div[@role="group"][@data-testid="flight.forms.i0.units.i0.passengerGender"]//label[@data-testid="0"]//input[@type="radio"]`).click();
     });
 
     // it('Search Chair on Amazon.com', () => {
