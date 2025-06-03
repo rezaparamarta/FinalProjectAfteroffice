@@ -10,7 +10,13 @@ on:
   workflow_dispatch:
 
 jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: build stages
+        run: echo "build App"
   test:
+    needs: build
     runs-on: ubuntu-latest
     env:
       BASE_URL_AMAZON: 'https://www.amazon.com'  # URL yang dipakai di cy.visit()
@@ -57,3 +63,16 @@ jobs:
         with:
           name: cypress-screenshots
           path: cypress/screenshots/**
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - name: deploy stages
+        run: echo "Deploy App"
+  non-functional-test:
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - name: non func test
+        run: echo "non func test"
