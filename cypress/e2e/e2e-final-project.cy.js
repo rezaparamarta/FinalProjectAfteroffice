@@ -53,6 +53,9 @@ describe('Final Project', () => {
         cy.xpath(`//div[@data-testid="contact.contactCountryOfResidenceId"]//button[@type="button"]`).click();
         cy.xpath(`//div[@data-testid="floater-container"]//input[@placeholder="Cari"]`).type('Malaysia');
         cy.xpath(`//ul[@role="listbox"]//input[@type="radio"]`).click();
+        cy.xpath(`//buttonp[@type="button"]`).click();
+        cy.xpath(`//div[@data-testid="floater-container"]//input="Cari"`).type('Indonesia');
+        cy.xpath(`//ul[@role="listbox"]//input[@type="radio"]`).click();
         cy.xpath(`//input[@id="contact.contactPhone"]`).type('08123456788');
 
         // Input data 2
