@@ -10,7 +10,13 @@ on:
   workflow_dispatch:
 
 jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: build stages
+        run: echo "build App"
   test:
+    needs: build
     runs-on: ubuntu-latest
     env:
       BASE_URL_AMAZON: 'https://www.amazon.com'  # URL yang dipakai di cy.visit()
