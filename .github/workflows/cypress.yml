@@ -66,6 +66,7 @@ jobs:
         run: echo "Deploy App"
   non-functional-test:
     runs-on: ubuntu-latest
+    needs: test
     steps:
       - name: non func test
         run: echo "non func test"
