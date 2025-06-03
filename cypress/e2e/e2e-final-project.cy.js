@@ -33,14 +33,13 @@ describe('Final Project', () => {
         cy.xpath(`//button[@data-test="SearchButtonBox"]`).click();
 
         // Select Maskapai
-        cy.xpath(`//button[@type="button"]//span[@label="Tampilkan semua 21 maskapai"]`).click();
-        // cy.xpath(`//div[@class='a5d86-box a5d86-fill-inherit a5d86-text-inherit a5d86-self-center a5d86-flex      ']//button[@type='button']`).click();
-        // cy.xpath(`//div[@data-component='flight-filter-item-airline']//label[@data-element-value='Malaysia Airlines']//input[@type='checkbox']`).click();
+        cy.xpath(`//div[@data-testid="filter-container"]//div[@class="a84bc-box a84bc-fill-inherit a84bc-text-inherit a84bc-self-center a84bc-flex      "]//button[@type='button']`).click();
+        cy.xpath(`//div[@data-component='flight-filter-item-airline']//label[@data-element-value='Malaysia Airlines']//input[@type='checkbox']`).click();
 
-        // // Sortir berdasarkan yang tercepat
-        // cy.xpath(`//div[@data-element-name='flight-sort']`).click();
-        // cy.xpath(`//div[@data-testid="floater-container"]//li[@role="presentation"][4]`).click();
-        // cy.xpath(`//button[@type="button"]//div[@class="a5d86-box a5d86-fill-inherit a5d86-text-inherit a5d86-pr-4      "]//p[@id="sort-options-label"]`).should('be.visible').click();
+        // Sortir berdasarkan yang tercepat
+        cy.xpath(`//div[@data-element-name='flight-sort']`).click();
+        cy.xpath(`//div[@data-testid="floater-container"]//li[@role="presentation"][4]`).click();
+        cy.xpath(`//div[@data-testid="selection-popover"]//button[@type="button"]`).should('be.visible').click();
        
         // // Select flight from the list
         // cy.xpath(`//div[@class="sc-cjERFW fdGdnw"]//div[@class="sc-cCYyox iNqLle"][1]`).should('exist').click();
