@@ -58,9 +58,8 @@ jobs:
           name: cypress-screenshots
           path: cypress/screenshots/**
 
-
   deploy:
     runs-on: ubuntu-latest
-  steps:
-    - name: deploy stages
-      run: echo "Deploy App"
+    steps:
+      - name: deploy stages
+        run: echo "Deploy App"
