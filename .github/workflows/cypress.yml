@@ -64,3 +64,8 @@ jobs:
     steps:
       - name: deploy stages
         run: echo "Deploy App"
+  non-functional-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: non func test
+        run: echo "non func test"
