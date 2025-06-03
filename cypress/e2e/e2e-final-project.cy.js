@@ -53,13 +53,23 @@ describe('Final Project', () => {
         cy.xpath(`//div[@data-testid="contact.contactCountryOfResidenceId"]//button[@type="button"]`).click();
         cy.xpath(`//div[@data-testid="floater-container"]//input[@placeholder="Cari"]`).type('Malaysia');
         cy.xpath(`//ul[@role="listbox"]//input[@type="radio"]`).click();
-        cy.xpath(`//buttonp[@type="button"]`).click();
-        cy.xpath(`//div[@data-testid="floater-container"]//input="Cari"`).type('Indonesia');
+        cy.get('[data-element-name="contact-calling-code-input"]').click();
+        cy.xpath(`//span[@class="sc-hLseeU Typographystyled__TypographyStyled-sc-1uoovui-0 bKjorE lfSBCC"]//input[@placeholder="Cari"]`).type('Indonesia');
         cy.xpath(`//ul[@role="listbox"]//input[@type="radio"]`).click();
-        cy.xpath(`//input[@id="contact.contactPhone"]`).type('08123456788');
+        cy.xpath(`//input[@id='contact.contactPhoneNumber']`).type('08123456788');
 
         // Input data 2
-        cy.xpath(`//div[@role="group"][@data-testid="flight.forms.i0.units.i0.passengerGender"]//label[@data-testid="0"]//input[@type="radio"]`).click();
+        cy.xpath(`//input[@aria-label="Pria"][@type='radio']`).click();
+        cy.xpath(`//div[@data-testid="flight.forms.i0.units.i0.passengerGender"]//label[@data-element-name='0']`).click();
+        cy.xpath(`//input[@id='flight.forms.i0.units.i0.passengerFirstName']`).type('Reza');
+        cy.xpath(`//input[@id='flight.forms.i0.units.i0.passengerLastName']`).type('Paramarta');
+        cy.xpath(`//input[@data-testid='flight.forms.i0.units.i0.passengerDateOfBirth-DateInputDataTestId']`).type('4');
+        cy.xpath(`//div[@data-testid="flight.forms.i0.units.i0.passengerDateOfBirth-MonthInputDataTestId"]`).click();
+        cy.xpath(`//div[@data-testid="floater-container"]//ul[@role="listbox"]//li[@class='a5d86-box a5d86-fill-inherit a5d86-text-inherit      '][1]`).click();
+        cy.xpath(`//input[@data-testid='flight.forms.i0.units.i0.passengerDateOfBirth-YearInputDataTestId']`).type('1992');
+        cy.xpath(`//div[@data-testid="flight.forms.i0.units.i0.passengerNationality"]`).click();
+        cy.xpath(`//input[@placeholder="Cari"]`).type('Malaysia');
+        cy.xpath(`//div[@class='a5d86-box a5d86-fill-inherit a5d86-text-inherit a5d86-flex a5d86-overflow-y-auto      ']`).click();
     });
 
     // it('Search Chair on Amazon.com', () => {
