@@ -18,7 +18,7 @@ describe('Final Project', () => {
     // });
 
     it('Order Flight', () => {
-        cy.visit('https://www.agoda.com/id-id/');
+        cy.visit(Cypress.env(`BASE_URL_AGODA`));
 
         // Click Flight Icon
         cy.xpath("//li[@id='tab-flight-tab']").click();
@@ -33,26 +33,21 @@ describe('Final Project', () => {
         cy.xpath(`//button[@data-test="SearchButtonBox"]`).click();
 
         // Select Maskapai
-        cy.xpath(`//div[@data-testid="filter-container"]//div[@class="a84bc-box a84bc-fill-inherit a84bc-text-inherit a84bc-self-center a84bc-flex      "]//button[@type='button']`).click();
+        cy.xpath(`//div[@data-testid="filter-container"]//button[@type='button']`).click({multiple: true});
         cy.xpath(`//div[@data-component='flight-filter-item-airline']//label[@data-element-value='Malaysia Airlines']//input[@type='checkbox']`).click();
 
         // Sortir berdasarkan yang tercepat
         cy.xpath(`//div[@data-element-name='flight-sort']`).click();
         cy.xpath(`//div[@data-testid="floater-container"]//li[@role="presentation"][4]`).click();
-        cy.xpath(`//div[@data-testid="selection-popover"]//button[@type="button"]`).should('be.visible').click();
+        cy.get('#sort-options-label').click();
        
-        // // Select flight from the list
-        // cy.xpath(`//div[@class="sc-cjERFW fdGdnw"]//div[@class="sc-cCYyox iNqLle"][1]`).should('exist').click();
-        // cy.xpath(`//div[@class="sc-cjERFW fdGdnw"]//div[@class="sc-cCYyox iNqLle"][1]`).should('be.visible');
-        //cy.xpath(`//button[@data-component="flight-card-bookButton"]`).should('exist');
-        // cy.xpath(`//button[@data-component="flight-card-bookButton"]`).click();
+        // Select flight from the list
+        cy.xpath(`//div[@class="Grid__GridStyled-sc-30ivvs-0 bGtMAu"]//div[@data-component="flight-card"]//button[@aria-label="Buka detail penerbangan"]`).first().click();
+        cy.xpath(`//button[@data-component="flight-card-bookButton"]`).should('exist');
+        cy.xpath(`//button[@data-component="flight-card-bookButton"]`).click();
 
         // Input Data
-        // cy.xpath(`//input[@id='contact.contactFirstName']`).type(Cypress.env('firstName'));
-        // cy.xpath(`//input[@id='contact.contactLastName']`).type(Cypress.env('lastName'));
-        // cy.xpath(`//input[@id='contact.contactEmail']`).type(Cypress.env('email'));
-        // cy.xpath(`//input[@id='contact.contactPhoneNumber']`).type(Cypress.env('phoneNumber'));
-
+        cy.xpath(`//input[@id="contact.contactFirstName"]`).type('Reza');
     });
 
     // it('Search Chair on Amazon.com', () => {
