@@ -95,12 +95,8 @@ describe('Final Project', () => {
         cy.xpath(`//input[@data-testid="flight.forms.i0.units.i0.passportExpiryDate-YearInputDataTestId"]`).type('2028');
 
         // Button Add to continue adds-on
-        cy.xpath(`//button[@data-component="flight-continue-to-addOns-button"]`).click();
-        cy.wait(5000);
-        cy.xpath(`//div[@data-testid="radio-button-option-no"]`).click();
-        cy.wait(5000);
-        cy.xpath(`//button[@data-testid="continue-to-payment-button"]`).click();
-        cy.xpath(`//button[@aria-label="close"]`).click();
+        cy.get('[data-testid="kite-box"] > :nth-child(1) > .a84bc-bg-product-primary').click();
+        
 
     });
 });
