@@ -7,15 +7,24 @@ describe('Final Project', () => {
         cy.clearLocalStorage();
     });
 
-    // it('youtube search', () => {
-    //     cy.visit(Cypress.env(`BASE_URL_YOUTUBE`));
-    //     cy.wait(4000);
-    //     trendingPage.goToTrending();
-    //     trendingPage.listMenuTrendingMovies();
-    //     cy.wait(4000);
-    //     trendingPage.goToTrendingMovies();
-    //     //trendingPage.assertionPage();
-    // });
+    it.skip('youtube search', () => {
+        cy.visit(Cypress.env(`BASE_URL_YOUTUBE`));
+        cy.wait(4000);
+        trendingPage.goToTrending();
+        trendingPage.listMenuTrendingMovies();
+        cy.wait(4000);
+        trendingPage.goToTrendingMovies();
+        //trendingPage.assertionPage();
+    });
+
+    it.skip('Search Chair on Amazon.com', () => {
+        cy.visit(Cypress.env('BASE_URL_AMAZON'));
+        cy.wait(5000);
+        filterItemPage.searchItems();
+        cy.wait(5000);
+        filterItemPage.sortFeatureItems();
+        filterItemPage.assertionPage();
+    });    
 
     it('Order Flight', () => {
         cy.visit(Cypress.env(`BASE_URL_AGODA`));
@@ -27,7 +36,7 @@ describe('Final Project', () => {
         cy.xpath("//div[@class='AutocompleteSearch NewDesign'][2]").click();
         cy.xpath("//input[@id='flight-destination-search-input']").type('Singapore');
         cy.xpath("//div[@class='Popup__content']//li[@data-selenium='autosuggest-item'][1]").click();
-        cy.xpath(`//div[@class="PriceSurgePicker-Day__circle PriceSurgePicker-Day__circle--wide"]//span[@data-selenium-date="2025-06-04"]`).click();
+        cy.xpath(`//div[@class="PriceSurgePicker-Day__circle PriceSurgePicker-Day__circle--wide"]//span[@data-selenium-date="2025-06-05"]`).click();
         cy.xpath(`//div[@class="ChipSetContainer"]//button[@data-component="flight-search-cabinClass-Economy"]`).click();
         cy.xpath(`//div[@id="flight-occupancy"]//div[@class="Box-sc-kv6pi1-0 hRUYUu IconBox__wrapper"]`).click();
         cy.xpath(`//button[@data-test="SearchButtonBox"]`).click();
@@ -58,27 +67,40 @@ describe('Final Project', () => {
         cy.xpath(`//ul[@role="listbox"]//input[@type="radio"]`).click();
         cy.xpath(`//input[@id='contact.contactPhoneNumber']`).type('08123456788');
 
-        // Input data 2
+        // Pilih Gender
         cy.xpath(`//input[@aria-label="Pria"][@type='radio']`).click();
         cy.xpath(`//div[@data-testid="flight.forms.i0.units.i0.passengerGender"]//label[@data-element-name='0']`).click();
+
+        // Data diri
         cy.xpath(`//input[@id='flight.forms.i0.units.i0.passengerFirstName']`).type('Reza');
         cy.xpath(`//input[@id='flight.forms.i0.units.i0.passengerLastName']`).type('Paramarta');
+
+        // Data tanggal lahir
         cy.xpath(`//input[@data-testid='flight.forms.i0.units.i0.passengerDateOfBirth-DateInputDataTestId']`).type('4');
         cy.xpath(`//div[@data-testid="flight.forms.i0.units.i0.passengerDateOfBirth-MonthInputDataTestId"]`).click();
-        cy.xpath(`//div[@data-testid="floater-container"]//ul[@role="listbox"]//li[@class='a5d86-box a5d86-fill-inherit a5d86-text-inherit      '][1]`).click();
+        cy.xpath(`(//input[contains(@name,'dropdown-list-item')])[6]`).click();
         cy.xpath(`//input[@data-testid='flight.forms.i0.units.i0.passengerDateOfBirth-YearInputDataTestId']`).type('1992');
         cy.xpath(`//div[@data-testid="flight.forms.i0.units.i0.passengerNationality"]`).click();
         cy.xpath(`//input[@placeholder="Cari"]`).type('Malaysia');
-        cy.xpath(`//div[@class='a5d86-box a5d86-fill-inherit a5d86-text-inherit a5d86-flex a5d86-overflow-y-auto      ']`).click();
+        cy.xpath(`//ul[@role="listbox"]//input[@type="radio"]`).click();
+        cy.xpath(`//input[@id="flight.forms.i0.units.i0.passportNumber"]`).type('123456789');
+        cy.xpath(`//div[@data-testid="flight.forms.i0.units.i0.passportCountryOfIssue"]//button[@type="button"]`).click();
+        cy.xpath(`//input[@placeholder="Cari"]`).type('Malaysia');
+        cy.xpath(`//ul[@role="listbox"]//input[@type="radio"]`).click();
+
+        // Tanggal dan Habis berlaku password
+        cy.xpath(`//input[@datatestid="flight.forms.i0.units.i0.passportExpiryDate-DateInputDataTestId"]`).type('4');
+        cy.xpath(`//div[@data-testid="flight.forms.i0.units.i0.passportExpiryDate-MonthInputDataTestId"]`).click();
+        cy.xpath(`(//input[contains(@name,'dropdown-list-item')])[6]`).click();
+        cy.xpath(`//input[@data-testid="flight.forms.i0.units.i0.passportExpiryDate-YearInputDataTestId"]`).type('2028');
+
+        // Button Add to continue adds-on
+        cy.xpath(`//button[@data-component="flight-continue-to-addOns-button"]`).click();
+        cy.wait(5000);
+        cy.xpath(`//div[@data-testid="radio-button-option-no"]`).click();
+        cy.wait(5000);
+        cy.xpath(`//button[@data-testid="continue-to-payment-button"]`).click();
+        cy.xpath(`//button[@aria-label="close"]`).click();
+
     });
-
-    // it('Search Chair on Amazon.com', () => {
-    //     cy.visit(Cypress.env('BASE_URL_AMAZON'));
-    //     cy.wait(5000);
-    //     filterItemPage.searchItems();
-    //     cy.wait(5000);
-    //     filterItemPage.sortFeatureItems();
-    //     filterItemPage.assertionPage();
-    // });
-
 });
