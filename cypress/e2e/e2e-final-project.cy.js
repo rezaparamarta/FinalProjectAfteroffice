@@ -95,8 +95,16 @@ describe('Final Project', () => {
         cy.xpath(`//input[@data-testid="flight.forms.i0.units.i0.passportExpiryDate-YearInputDataTestId"]`).type('2028');
 
         // Button Add to continue adds-on
-        cy.get('[data-testid="kite-box"] > :nth-child(1) > .a84bc-bg-product-primary').click();
-        
+        cy.wait(5000);
+        cy.xpath('//button[@data-component="flight-continue-to-addOns-button"]').click({force: true});
+        cy.xpath(`//button[@data-testid="continue-to-payment-button"]`).click();
+        cy.xpath(`//button[@aria-label="close"]`).click();
 
+        // Assertion
+        // Check Passenger Detail Name
+        cy.xpath(`//div[@data-component="mob-flight-contact-wrapper"]//div[@class="sc-jtdBMk iDUJvR"]//div[@data-component="passenger-summary-list"]//div[@class="Box-sc-kv6pi1-0 fKqVJP"]//span[@data-component="name-container-name"]`).should('be.visible').contains('Reza Paramarta');
+
+        // Check Passenger Detail Schedule
+        
     });
 });
