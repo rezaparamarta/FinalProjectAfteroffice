@@ -25,6 +25,8 @@ jobs:
       BASE_URL_AGODA: 'https://www.agoda.com/id-id/'  # URL yang dipakai di cy.visit()
 
       # Gunakan GitHub secrets untuk environment variables
+      FLIGHT_ORIGIN: ${{ secrets.FLIGHT_ORIGIN }}
+      FLIGHT_DESTINATION: ${{ secrets.FLIGHT_DESTINATION }}
       CONTACT_FIRST_NAME: ${{ secrets.CONTACT_FIRST_NAME }}
       CONTACT_LAST_NAME: ${{ secrets.CONTACT_LAST_NAME }}
       CONTACT_EMAIL: ${{ secrets.CONTACT_EMAIL }}
