@@ -4,10 +4,10 @@ class orderTicket{
     }
 
     formBooking() {
-        cy.xpath("//input[@id='flight-origin-search-input']").type('Jakarta');
+        cy.xpath("//input[@id='flight-origin-search-input']").type(Cypress.env('FLIGHT_ORIGIN'));
         cy.xpath("//div[@class='Popup__content']//li[@data-selenium='autosuggest-item'][1]").click();
         cy.xpath("//div[@class='AutocompleteSearch NewDesign'][2]").click();
-        cy.xpath("//input[@id='flight-destination-search-input']").type('Singapore');
+        cy.xpath("//input[@id='flight-destination-search-input']").type(Cypress.env('FLIGHT_DESTINATION'));
         cy.xpath("//div[@class='Popup__content']//li[@data-selenium='autosuggest-item'][1]").click();
         cy.xpath(`//div[@class="PriceSurgePicker-Day__circle PriceSurgePicker-Day__circle--wide"]//span[@data-selenium-date="2025-06-07"]`).click();
         cy.xpath(`//div[@class="ChipSetContainer"]//button[@data-component="flight-search-cabinClass-Economy"]`).click();
@@ -33,16 +33,16 @@ class orderTicket{
     }
 
     formDataInput() {
-        cy.xpath(`//input[@id="contact.contactFirstName"]`).type('Reza');
-        cy.xpath(`//input[@id="contact.contactLastName"]`).type('Paramarta');
-        cy.xpath(`//input[@id="contact.contactEmail"]`).type('reza.paramarta@gmail.com');
+        cy.xpath(`//input[@id="contact.contactFirstName"]`).type(Cypress.env('CONTACT_FIRST_NAME'));
+        cy.xpath(`//input[@id="contact.contactLastName"]`).type(Cypress.env('CONTACT_LAST_NAME'));
+        cy.xpath(`//input[@id="contact.contactEmail"]`).type(Cypress.env('CONTACT_EMAIL'));
         cy.xpath(`//div[@data-testid="contact.contactCountryOfResidenceId"]//button[@type="button"]`).click();
         cy.xpath(`//div[@data-testid="floater-container"]//input[@placeholder="Cari"]`).type('Malaysia');
         cy.xpath(`//ul[@role="listbox"]//input[@type="radio"]`).click();
         cy.get('[data-element-name="contact-calling-code-input"]').click();
         cy.xpath(`//span[@class="sc-hLseeU Typographystyled__TypographyStyled-sc-1uoovui-0 bKjorE lfSBCC"]//input[@placeholder="Cari"]`).type('Indonesia');
         cy.xpath(`//ul[@role="listbox"]//input[@type="radio"]`).click();
-        cy.xpath(`//input[@id='contact.contactPhoneNumber']`).type('08123456788');
+        cy.xpath(`//input[@id='contact.contactPhoneNumber']`).type(Cypress.env('CONTACT_PHONE_NUMBER'));
     }
 
     selectGender() {
@@ -51,33 +51,38 @@ class orderTicket{
     }
 
     selfIdentity() {
-        cy.xpath(`//input[@id='flight.forms.i0.units.i0.passengerFirstName']`).type('Reza');
-        cy.xpath(`//input[@id='flight.forms.i0.units.i0.passengerLastName']`).type('Paramarta');
-        cy.xpath(`//input[@data-testid='flight.forms.i0.units.i0.passengerDateOfBirth-DateInputDataTestId']`).type('4');
+        cy.xpath(`//input[@id='flight.forms.i0.units.i0.passengerFirstName']`).type(Cypress.env('PASSENGER_FIRST_NAME'));
+        cy.xpath(`//input[@id='flight.forms.i0.units.i0.passengerLastName']`).type(Cypress.env('PASSENGER_LAST_NAME'));
+        cy.xpath(`//input[@data-testid='flight.forms.i0.units.i0.passengerDateOfBirth-DateInputDataTestId']`).type(Cypress.env('PASSENGER_DATE'));
         cy.xpath(`//div[@data-testid="flight.forms.i0.units.i0.passengerDateOfBirth-MonthInputDataTestId"]`).click();
         cy.xpath(`//div[@data-testid="flight.forms.i0.units.i0.passengerDateOfBirth-MonthInputDataTestId"]//button[@type="button"]`).click();       
         cy.xpath(`//ul[@role="listbox"]//li[6]//input[@type="radio"][@name="dropdown-list-item"]`).click();
-        cy.xpath(`//input[@data-testid='flight.forms.i0.units.i0.passengerDateOfBirth-YearInputDataTestId']`).type('1992');
+        cy.xpath(`//input[@data-testid='flight.forms.i0.units.i0.passengerDateOfBirth-YearInputDataTestId']`).type(Cypress.env('PASSENGER_YEAR'));
         cy.xpath(`//div[@data-testid="flight.forms.i0.units.i0.passengerNationality"]`).click();
         cy.xpath(`//input[@placeholder="Cari"]`).type('Malaysia');
         cy.xpath(`//ul[@role="listbox"]//input[@type="radio"]`).click();
-        cy.xpath(`//input[@id="flight.forms.i0.units.i0.passportNumber"]`).type('123456789');
+        cy.xpath(`//input[@id="flight.forms.i0.units.i0.passportNumber"]`).type(Cypress.env('PASSENGER_PASSPORT'));
         cy.xpath(`//div[@data-testid="flight.forms.i0.units.i0.passportCountryOfIssue"]//button[@type="button"]`).click();
         cy.xpath(`//input[@placeholder="Cari"]`).type('Malaysia');
         cy.xpath(`//ul[@role="listbox"]//input[@type="radio"]`).click();
     }
 
      passportCredentials() {
-         cy.xpath(`//input[@datatestid="flight.forms.i0.units.i0.passportExpiryDate-DateInputDataTestId"]`).type('4');
+         cy.xpath(`//input[@datatestid="flight.forms.i0.units.i0.passportExpiryDate-DateInputDataTestId"]`).type(Cypress.env('PASSPORT_DATE'));
          cy.xpath(`//div[@data-testid="flight.forms.i0.units.i0.passportExpiryDate-MonthInputDataTestId"]`).click();
          cy.xpath(`//ul[@role="listbox"]//li[6]//input[@type="radio"][@name="dropdown-list-item"]`).click();
-         cy.xpath(`//input[@data-testid="flight.forms.i0.units.i0.passportExpiryDate-YearInputDataTestId"]`).type('2028');
+         cy.xpath(`//input[@data-testid="flight.forms.i0.units.i0.passportExpiryDate-YearInputDataTestId"]`).type(Cypress.env('PASSPORT_YEAR'));
      }
 
     createOrderTicket() {
-        cy.xpath('//button[@data-component="flight-continue-to-addOns-button"]').click({force: true});
+        cy.xpath('//button[@data-component="flight-continue-to-addOns-button"]')
+            .should('be.visible')  // Pastikan tombol terlihat sebelum mengklik
+            .click({force: true});
         cy.wait(5000);
-        cy.xpath(`//button[@type="submit"][@data-testid="continue-to-payment-button"]`).click();
+        cy.xpath(`//button[@type="submit"][@data-testid="continue-to-payment-button"]`)
+            .should('be.visible')  // Pastikan tombol terlihat
+            .click();  // Klik tombol untuk melanjutkan        
+        //cy.xpath(`//button[@type="submit"][@data-testid="continue-to-payment-button"]`).click();
         //cy.xpath(//button[@data-action="CEG_UPSELL"][@type="button"]//span[@class="sc-hLseeU Typographystyled__TypographyStyled-sc-1uoovui-0 bKjorE haUxpM"]).click({multiple: true});
     }
 
