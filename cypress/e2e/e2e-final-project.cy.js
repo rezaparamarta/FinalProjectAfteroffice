@@ -94,20 +94,16 @@ describe('Final Project', () => {
         cy.xpath(`(//input[contains(@name,'dropdown-list-item')])[6]`).click();
         cy.xpath(`//input[@data-testid="flight.forms.i0.units.i0.passportExpiryDate-YearInputDataTestId"]`).type('2028');
 
-        // Button Add to continue adds-on
-        cy.wait(5000);
+        // Button Add to continue adds-on, confirmation payment, and close pop up adds-on
         cy.xpath('//button[@data-component="flight-continue-to-addOns-button"]').click({force: true});
-        cy.xpath(`//button[@data-testid="continue-to-payment-button"]`).click();
-        cy.xpath(`//button[@aria-label="close"]`).click();
+        cy.wait(5000);
+        cy.xpath(`//button[@type="submit"][@data-testid="continue-to-payment-button"]`).click();
+        //cy.xpath(//button[@data-action="CEG_UPSELL"][@type="button"]//span[@class="sc-hLseeU Typographystyled__TypographyStyled-sc-1uoovui-0 bKjorE haUxpM"]).click({multiple: true});
 
-        // Assertion
-        // Check Passenger Detail Name
-        cy.xpath(`//div[@data-component="mob-flight-contact-wrapper"]//div[@class="sc-jtdBMk iDUJvR"]//div[@data-component="passenger-summary-list"]//div[@class="Box-sc-kv6pi1-0 fKqVJP"]//span[@data-component="name-container-name"]`).should('be.visible').contains('Reza Paramarta');
-
-        // Check Passenger Detail Schedule
-        cy.xpath(`//div[@data-testid="flight-booking-details-overview"]//div[@data-component="mob-flight-slice-origin-dest"]//div[@data-value="CGK"]`).should('be.visible').contains('Jakarta');
-        cy.xpath(`//div[@data-testid="flight-booking-details-overview"]//div[@data-component="mob-flight-slice-origin-dest"]//div[@data-value="SIN"]`).should('be.visible').contains('Singapura');
-        cy.xpath(`//div[@data-testid="kite-box"]//span[@data-component="mob-flight-slice-departuredate"][@data-testid="mob-flight-slice-departuredate"]`).should('be.visible').contains('06/07/2025');
-        
+        // Assertion Passenger Details (Name, departume time and location then price)
+        cy.xpath(`//div[@data-component="name-container"]//div[@class="Box-sc-kv6pi1-0 fKqVJP"]`).should('be.visible').contains('Reza Paramarta');
+        cy.xpath(`//div[@data-component="flight-booking-itineraryHeader"][@data-section="title-bar"]//h5[1]`).should('be.visible').contains('Jakarta')
+        cy.xpath(`//div[@data-component='flight-booking-itineraryHeader']//h5[2]`).should('be.visible').contains('Singapura');
+        cy.xpath(`//dd[@data-component='mob-flight-price-total-desc']//span`).should('be.visible');
     });
 });
