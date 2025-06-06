@@ -23,7 +23,9 @@ module.exports = defineConfig({
       ...process.env,  // Menyebarkan variabel environment dari file .env
     },
     setupNodeEvents(on, config) {
-      // implement node event listeners here
+      // Menambahkan flag untuk menonaktifkan WebGL
+      config.browserArgs = ['--disable-gpu'];
+      return config;
     },
   },
 });
