@@ -24,7 +24,7 @@ module.exports = defineConfig({
     },
     setupNodeEvents(on, config) {
       // Menambahkan flag untuk menonaktifkan WebGL
-      config.browserArgs = ['--disable-gpu'];
+      config.browserArgs = ['--disable-gpu', '--enable-unsafe-swiftshader'];
       return config;
     },
   },
