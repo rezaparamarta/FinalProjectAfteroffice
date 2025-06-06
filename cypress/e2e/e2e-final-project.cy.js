@@ -36,7 +36,7 @@ describe('Final Project', () => {
         cy.xpath("//div[@class='AutocompleteSearch NewDesign'][2]").click();
         cy.xpath("//input[@id='flight-destination-search-input']").type('Singapore');
         cy.xpath("//div[@class='Popup__content']//li[@data-selenium='autosuggest-item'][1]").click();
-        cy.xpath(`//div[@class="PriceSurgePicker-Day__circle PriceSurgePicker-Day__circle--wide"]//span[@data-selenium-date="2025-06-05"]`).click();
+        cy.xpath(`//div[@class="PriceSurgePicker-Day__circle PriceSurgePicker-Day__circle--wide"]//span[@data-selenium-date="2025-06-07"]`).click();
         cy.xpath(`//div[@class="ChipSetContainer"]//button[@data-component="flight-search-cabinClass-Economy"]`).click();
         cy.xpath(`//div[@id="flight-occupancy"]//div[@class="Box-sc-kv6pi1-0 hRUYUu IconBox__wrapper"]`).click();
         cy.xpath(`//button[@data-test="SearchButtonBox"]`).click();
@@ -105,6 +105,9 @@ describe('Final Project', () => {
         cy.xpath(`//div[@data-component="mob-flight-contact-wrapper"]//div[@class="sc-jtdBMk iDUJvR"]//div[@data-component="passenger-summary-list"]//div[@class="Box-sc-kv6pi1-0 fKqVJP"]//span[@data-component="name-container-name"]`).should('be.visible').contains('Reza Paramarta');
 
         // Check Passenger Detail Schedule
+        cy.xpath(`//div[@data-testid="flight-booking-details-overview"]//div[@data-component="mob-flight-slice-origin-dest"]//div[@data-value="CGK"]`).should('be.visible').contains('Jakarta');
+        cy.xpath(`//div[@data-testid="flight-booking-details-overview"]//div[@data-component="mob-flight-slice-origin-dest"]//div[@data-value="SIN"]`).should('be.visible').contains('Singapura');
+        cy.xpath(`//div[@data-testid="kite-box"]//span[@data-component="mob-flight-slice-departuredate"][@data-testid="mob-flight-slice-departuredate"]`).should('be.visible').contains('06/07/2025');
         
     });
 });
