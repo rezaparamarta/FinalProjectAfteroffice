@@ -96,8 +96,10 @@ class orderTicket {
     }
 
     createOrderTicket() {
-        cy.xpath('//button[@data-component="flight-continue-to-addOns-button"]', {timeout: 15000})
-            .should('be.visible')  // Pastikan tombol terlihat sebelum mengklik
+        cy.wait(5000);
+        cy.xpath('//button[@data-component="flight-continue-to-addOns-button"]', {timeout: 30000})
+            .should('be.visible')
+            .and('not.be.disabled')
             .click({force: true});
         cy.wait(5000);
         cy.xpath(`//button[@type="submit"][@data-testid="continue-to-payment-button"]`)
