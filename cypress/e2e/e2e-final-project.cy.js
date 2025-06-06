@@ -48,10 +48,10 @@ describe('Final Project', () => {
         // Data diri
         orderTicket.selfIdentity();
         // Tanggal dan Habis berlaku password
-        // orderTicket.passportCredentials();
-        // // Button Add to continue adds-on, confirmation payment, and close pop up adds-on
-        // orderTicket.createOrderTicket();
-        // // Assertion Passenger Details (Name, departume time and location then price)
-        // orderTicket.assertionCriteria();
+        orderTicket.passportCredentials();
+        // Button Add to continue adds-on, confirmation payment, and close pop up adds-on
+        orderTicket.createOrderTicket();
+        // Assertion Passenger Details (Name, departume time and location then price)
+        orderTicket.assertionCriteria();
     });
 });

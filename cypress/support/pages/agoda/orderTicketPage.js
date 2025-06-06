@@ -55,8 +55,8 @@ class orderTicket{
         cy.xpath(`//input[@id='flight.forms.i0.units.i0.passengerLastName']`).type('Paramarta');
         cy.xpath(`//input[@data-testid='flight.forms.i0.units.i0.passengerDateOfBirth-DateInputDataTestId']`).type('4');
         cy.xpath(`//div[@data-testid="flight.forms.i0.units.i0.passengerDateOfBirth-MonthInputDataTestId"]`).click();
-        cy.xpath(`//div[@data-testid="flight.forms.i0.units.i0.passengerDateOfBirth-MonthInputDataTestId"]`).click();
-        cy.xpath(`//input[contains(@name,'dropdown-list-item')][6]`).click();
+        cy.xpath(`//div[@data-testid="flight.forms.i0.units.i0.passengerDateOfBirth-MonthInputDataTestId"]//button[@type="button"]`).click();       
+        cy.xpath(`//ul[@role="listbox"]//li[6]//input[@type="radio"][@name="dropdown-list-item"]`).click();
         cy.xpath(`//input[@data-testid='flight.forms.i0.units.i0.passengerDateOfBirth-YearInputDataTestId']`).type('1992');
         cy.xpath(`//div[@data-testid="flight.forms.i0.units.i0.passengerNationality"]`).click();
         cy.xpath(`//input[@placeholder="Cari"]`).type('Malaysia');
@@ -67,26 +67,26 @@ class orderTicket{
         cy.xpath(`//ul[@role="listbox"]//input[@type="radio"]`).click();
     }
 
-    // passportCredentials() {
-    //     cy.xpath(`//input[@datatestid="flight.forms.i0.units.i0.passportExpiryDate-DateInputDataTestId"]`).type('4');
-    //     cy.xpath(`//div[@data-testid="flight.forms.i0.units.i0.passportExpiryDate-MonthInputDataTestId"]`).click();
-    //     cy.xpath(`//input[contains(@name,'dropdown-list-item')])[6]`).click();
-    //     cy.xpath(`//input[@data-testid="flight.forms.i0.units.i0.passportExpiryDate-YearInputDataTestId"]`).type('2028');
-    // }
+     passportCredentials() {
+         cy.xpath(`//input[@datatestid="flight.forms.i0.units.i0.passportExpiryDate-DateInputDataTestId"]`).type('4');
+         cy.xpath(`//div[@data-testid="flight.forms.i0.units.i0.passportExpiryDate-MonthInputDataTestId"]`).click();
+         cy.xpath(`//ul[@role="listbox"]//li[6]//input[@type="radio"][@name="dropdown-list-item"]`).click();
+         cy.xpath(`//input[@data-testid="flight.forms.i0.units.i0.passportExpiryDate-YearInputDataTestId"]`).type('2028');
+     }
 
-    // createOrderTicket() {
-    //     cy.xpath('//button[@data-component="flight-continue-to-addOns-button"]').click({force: true});
-    //     cy.wait(5000);
-    //     cy.xpath(`//button[@type="submit"][@data-testid="continue-to-payment-button"]`).click();
-    //     //cy.xpath(//button[@data-action="CEG_UPSELL"][@type="button"]//span[@class="sc-hLseeU Typographystyled__TypographyStyled-sc-1uoovui-0 bKjorE haUxpM"]).click({multiple: true});
-    // }
+    createOrderTicket() {
+        cy.xpath('//button[@data-component="flight-continue-to-addOns-button"]').click({force: true});
+        cy.wait(5000);
+        cy.xpath(`//button[@type="submit"][@data-testid="continue-to-payment-button"]`).click();
+        //cy.xpath(//button[@data-action="CEG_UPSELL"][@type="button"]//span[@class="sc-hLseeU Typographystyled__TypographyStyled-sc-1uoovui-0 bKjorE haUxpM"]).click({multiple: true});
+    }
 
-    // assertionCriteria() {
-    //     cy.xpath(`//div[@data-component="name-container"]//div[@class="Box-sc-kv6pi1-0 fKqVJP"]`).should('be.visible').contains('Reza Paramarta');
-    //     cy.xpath(`//div[@data-component="flight-booking-itineraryHeader"][@data-section="title-bar"]//h5[1]`).should('be.visible').contains('Jakarta')
-    //     cy.xpath(`//div[@data-component='flight-booking-itineraryHeader']//h5[2]`).should('be.visible').contains('Singapura');
-    //     cy.xpath(`//dd[@data-component='mob-flight-price-total-desc']//span`).should('be.visible');
-    // }
+    assertionCriteria() {
+        cy.xpath(`//div[@data-component="name-container"]//div[@class="Box-sc-kv6pi1-0 fKqVJP"]`).should('be.visible').contains('Reza Paramarta');
+        cy.xpath(`//div[@data-component="flight-booking-itineraryHeader"][@data-section="title-bar"]//h5[1]`).should('be.visible').contains('Jakarta')
+        cy.xpath(`//div[@data-component='flight-booking-itineraryHeader']//h5[2]`).should('be.visible').contains('Singapura');
+        cy.xpath(`//dd[@data-component='mob-flight-price-total-desc']//span`).should('be.visible');
+    }
 }
 
 export default new orderTicket();
