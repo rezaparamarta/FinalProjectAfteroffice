@@ -33,16 +33,22 @@ class orderTicket{
     }
 
     formDataInput() {
-        cy.xpath(`//input[@id="contact.contactFirstName"]`).type(Cypress.env('CONTACT_FIRST_NAME'));
-        cy.xpath(`//input[@id="contact.contactLastName"]`).type(Cypress.env('CONTACT_LAST_NAME'));
-        cy.xpath(`//input[@id="contact.contactEmail"]`).type(Cypress.env('CONTACT_EMAIL'));
+        // Menggunakan Cypress.env untuk mengambil environment variable langsung di dalam fungsi
+        const firstName = Cypress.env('CONTACT_FIRST_NAME');
+        const lastName = Cypress.env('CONTACT_LAST_NAME');
+        const email = Cypress.env('CONTACT_EMAIL');
+        const phoneNumber = Cypress.env('CONTACT_PHONE_NUMBER');
+
+        cy.xpath(`//input[@id="contact.contactFirstName"]`).type(firstName);
+        cy.xpath(`//input[@id="contact.contactLastName"]`).type(lastName);
+        cy.xpath(`//input[@id="contact.contactEmail"]`).type(email);
         cy.xpath(`//div[@data-testid="contact.contactCountryOfResidenceId"]//button[@type="button"]`).click();
         cy.xpath(`//div[@data-testid="floater-container"]//input[@placeholder="Cari"]`).type('Malaysia');
         cy.xpath(`//ul[@role="listbox"]//input[@type="radio"]`).click();
         cy.get('[data-element-name="contact-calling-code-input"]').click();
         cy.xpath(`//span[@class="sc-hLseeU Typographystyled__TypographyStyled-sc-1uoovui-0 bKjorE lfSBCC"]//input[@placeholder="Cari"]`).type('Indonesia');
         cy.xpath(`//ul[@role="listbox"]//input[@type="radio"]`).click();
-        cy.xpath(`//input[@id='contact.contactPhoneNumber']`).type(Cypress.env('CONTACT_PHONE_NUMBER'));
+        cy.xpath(`//input[@id='contact.contactPhoneNumber']`).type(phoneNumber);
     }
 
     selectGender() {
@@ -51,28 +57,40 @@ class orderTicket{
     }
 
     selfIdentity() {
-        cy.xpath(`//input[@id='flight.forms.i0.units.i0.passengerFirstName']`).type(Cypress.env('PASSENGER_FIRST_NAME'));
-        cy.xpath(`//input[@id='flight.forms.i0.units.i0.passengerLastName']`).type(Cypress.env('PASSENGER_LAST_NAME'));
-        cy.xpath(`//input[@data-testid='flight.forms.i0.units.i0.passengerDateOfBirth-DateInputDataTestId']`).type(Cypress.env('PASSENGER_DATE'));
+        const passenggerFirstName = Cypress.env('PASSENGER_FIRST_NAME');
+        const passengerLastName = Cypress.env('PASSENGER_LAST_NAME');
+        const passengerDate = Cypress.env('PASSENGER_DATE');
+        const passengerYear = Cypress.env('PASSENGER_YEAR');
+        const passportNumber = Cypress.env('PASSENGER_PASSPORT');
+
+        // Mengisi form dengan data yang diambil dari environment variables
+        cy.xpath(`//input[@id='flight.forms.i0.units.i0.passengerFirstName']`).type(passenggerFirstName);
+        cy.xpath(`//input[@id='flight.forms.i0.units.i0.passengerLastName']`).type(passengerLastName);
+        cy.xpath(`//input[@data-testid='flight.forms.i0.units.i0.passengerDateOfBirth-DateInputDataTestId']`).type(passengerDate);
         cy.xpath(`//div[@data-testid="flight.forms.i0.units.i0.passengerDateOfBirth-MonthInputDataTestId"]`).click();
-        cy.xpath(`//div[@data-testid="flight.forms.i0.units.i0.passengerDateOfBirth-MonthInputDataTestId"]//button[@type="button"]`).click();       
+        cy.xpath(`//div[@data-testid="flight.forms.i0.units.i0.passengerDateOfBirth-MonthInputDataTestId"]//button[@type="button"]`).click();
         cy.xpath(`//ul[@role="listbox"]//li[6]//input[@type="radio"][@name="dropdown-list-item"]`).click();
-        cy.xpath(`//input[@data-testid='flight.forms.i0.units.i0.passengerDateOfBirth-YearInputDataTestId']`).type(Cypress.env('PASSENGER_YEAR'));
+        cy.xpath(`//input[@data-testid='flight.forms.i0.units.i0.passengerDateOfBirth-YearInputDataTestId']`).type(passengerYear);
         cy.xpath(`//div[@data-testid="flight.forms.i0.units.i0.passengerNationality"]`).click();
         cy.xpath(`//input[@placeholder="Cari"]`).type('Malaysia');
         cy.xpath(`//ul[@role="listbox"]//input[@type="radio"]`).click();
-        cy.xpath(`//input[@id="flight.forms.i0.units.i0.passportNumber"]`).type(Cypress.env('PASSENGER_PASSPORT'));
+        cy.xpath(`//input[@id="flight.forms.i0.units.i0.passportNumber"]`).type(passportNumber);
         cy.xpath(`//div[@data-testid="flight.forms.i0.units.i0.passportCountryOfIssue"]//button[@type="button"]`).click();
         cy.xpath(`//input[@placeholder="Cari"]`).type('Malaysia');
         cy.xpath(`//ul[@role="listbox"]//input[@type="radio"]`).click();
     }
 
-     passportCredentials() {
-         cy.xpath(`//input[@datatestid="flight.forms.i0.units.i0.passportExpiryDate-DateInputDataTestId"]`).type(Cypress.env('PASSPORT_DATE'));
-         cy.xpath(`//div[@data-testid="flight.forms.i0.units.i0.passportExpiryDate-MonthInputDataTestId"]`).click();
-         cy.xpath(`//ul[@role="listbox"]//li[6]//input[@type="radio"][@name="dropdown-list-item"]`).click();
-         cy.xpath(`//input[@data-testid="flight.forms.i0.units.i0.passportExpiryDate-YearInputDataTestId"]`).type(Cypress.env('PASSPORT_YEAR'));
-     }
+    passportCredentials() {
+        // Mengambil nilai dari environment variables langsung di dalam fungsi
+        const passportDate = Cypress.env('PASSPORT_DATE');
+        const passportYear = Cypress.env('PASSPORT_YEAR');
+
+        // Mengisi form dengan data yang diambil dari environment variables
+        cy.xpath(`//input[@datatestid="flight.forms.i0.units.i0.passportExpiryDate-DateInputDataTestId"]`).type(passportDate);
+        cy.xpath(`//div[@data-testid="flight.forms.i0.units.i0.passportExpiryDate-MonthInputDataTestId"]`).click();
+        cy.xpath(`//ul[@role="listbox"]//li[6]//input[@type="radio"][@name="dropdown-list-item"]`).click();
+        cy.xpath(`//input[@data-testid="flight.forms.i0.units.i0.passportExpiryDate-YearInputDataTestId"]`).type(passportYear);
+    }
 
     createOrderTicket() {
         cy.xpath('//button[@data-component="flight-continue-to-addOns-button"]')

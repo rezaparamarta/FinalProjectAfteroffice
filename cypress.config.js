@@ -1,8 +1,6 @@
 const { defineConfig } = require("cypress");
-
-// Setup env
 const dotenv = require("dotenv");
-dotenv.config();
+dotenv.config();  // Memuat variabel environment dari file .env
 
 module.exports = defineConfig({
   reporter: "mochawesome",
@@ -22,7 +20,7 @@ module.exports = defineConfig({
   e2e: {
     defaultCommandTimeout: 10000,
     env: {
-      ...process.env,
+      ...process.env,  // Menyebarkan variabel environment dari file .env
     },
     setupNodeEvents(on, config) {
       // implement node event listeners here
