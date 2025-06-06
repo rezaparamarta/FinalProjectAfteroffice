@@ -4,16 +4,24 @@ class orderTicket{
     }
 
     formBooking() {
-        cy.xpath("//input[@id='flight-origin-search-input']").type(Cypress.env('FLIGHT_ORIGIN'));
+        const flightOrigin = Cypress.env('FLIGHT_ORIGIN');
+        const flightDestination = Cypress.env('FLIGHT_DESTINATION');
+        
+        // Log values to check if they are correctly picked from environment variables
+        cy.log('Flight Origin:', flightOrigin);
+        cy.log('Flight Destination:', flightDestination);
+
+        cy.xpath("//input[@id='flight-origin-search-input']").type(flightOrigin);
         cy.xpath("//div[@class='Popup__content']//li[@data-selenium='autosuggest-item'][1]").click();
         cy.xpath("//div[@class='AutocompleteSearch NewDesign'][2]").click();
-        cy.xpath("//input[@id='flight-destination-search-input']").type(Cypress.env('FLIGHT_DESTINATION'));
+        cy.xpath("//input[@id='flight-destination-search-input']").type(flightDestination);
         cy.xpath("//div[@class='Popup__content']//li[@data-selenium='autosuggest-item'][1]").click();
         cy.xpath(`//div[@class="PriceSurgePicker-Day__circle PriceSurgePicker-Day__circle--wide"]//span[@data-selenium-date="2025-06-07"]`).click();
         cy.xpath(`//div[@class="ChipSetContainer"]//button[@data-component="flight-search-cabinClass-Economy"]`).click();
         cy.xpath(`//div[@id="flight-occupancy"]//div[@class="Box-sc-kv6pi1-0 hRUYUu IconBox__wrapper"]`).click();
         cy.xpath(`//button[@data-test="SearchButtonBox"]`).click();
     }
+
 
     selectFlight() {
         cy.xpath(`//div[@data-testid="filter-container"]//button[@type='button']`).click({multiple: true});
